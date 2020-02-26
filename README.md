@@ -21,10 +21,15 @@ This is a basic example which shows you how to find and download a sticker:
 
 ``` r
 library(stickr)
-## basic example code
+
+# list available stickers 
 stickr_list()
-stickr_get("R6", destfile = here::here("img/R6.png"))
+
+# View the tidyverse sticker
+stickr_view("tidyverse")
+# Get the tidyverse sticker, downloads to temp file if no destfile specified
+stickr_get("tidyverse")
 ```
 
 A common use case would be to include in an [RMarkdown](https://rmarkdown.rstudio.com/) document, 
-that would be done using `r stickr_insert("R6")`.
+that would be done using `r stickr_insert("tidyverse")`.
