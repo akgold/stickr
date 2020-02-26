@@ -1,0 +1,19 @@
+Package: stickr
+Type: Package
+Title: Use RStudio Hex Stickers
+Version: 0.1.0
+Authors@R: person("Alex", "Gold", email = "alexkgold@gmail.com",
+  role = c("aut", "cre"))
+Description: A package to download and use stickers from the rstudio/hex-stickers repo.
+  Designed to allow you to view and download stickers you might want, as well as include them in
+  RMarkdown documents.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    gh,
+    base64enc,
+    fs
+Suggests: 
+    knitr
+RoxygenNote: 7.0.2
