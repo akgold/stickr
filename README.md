@@ -32,4 +32,4 @@ stickr_get("tidyverse")
 ```
 
 A common use case would be to include in an [RMarkdown](https://rmarkdown.rstudio.com/) document, 
-that would be done using `r stickr_insert("tidyverse")`.
+that would be done using `stickr_insert("tidyverse")`.
