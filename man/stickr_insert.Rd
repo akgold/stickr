@@ -4,16 +4,12 @@
 \alias{stickr_insert}
 \title{Add hex sticker in Rmd doc}
 \usage{
-stickr_insert(name, pic_type = "png", destfile = NULL, ...)
+stickr_insert(name, ...)
 }
 \arguments{
 \item{name}{name of sticker, character of length 1}
 
-\item{pic_type}{one of "svg" or "png", defaults to "png"}
-
-\item{destfile}{destination, defaults to NULL}
-
-\item{...}{other arguments passed to \code{\link[knitr:include_graphics]{?knitr::include_graphics}}, consider \code{dpi}}
+\item{...}{other arguments passed to \code{\link{stickr_get}} and \code{\link[knitr:include_graphics]{?knitr::include_graphics}}, consider \code{dpi}}
 }
 \value{
 call to \code{\link[knitr:include_graphics]{?knitr::include_graphics}}
@@ -28,5 +24,6 @@ If you hit rate limits on github API calls, consider setting the GITHUB_PAT envi
 See \code{\link[gh:gh]{?gh::gh}} for details.
 }
 \examples{
+# This returns a function, really only makes sense inside Rmd
 stickr_insert("R6")
 }

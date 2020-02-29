@@ -4,19 +4,18 @@
 \alias{stickr_view}
 \title{View RStudio Stickers}
 \usage{
-stickr_view(name, pic_type = "png")
+stickr_view(name, ...)
 }
 \arguments{
 \item{name}{name of sticker, character of length 1}
 
-\item{pic_type}{one of "svg" or "png", defaults to "png"}
+\item{...}{arguments passed to \code{\link{stickr_get}}}
 }
 \value{
 file where sticker is, invisibly
 }
 \description{
-If you hit rate limits on github API calls, consider setting the GITHUB_PAT environment variable.
-See \code{\link[gh:gh]{?gh::gh}} for details.
+View RStudio Stickers
 }
 \examples{
 stickr_view("R6")

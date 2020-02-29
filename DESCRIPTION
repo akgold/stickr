@@ -1,7 +1,7 @@
 Package: stickr
 Type: Package
 Title: Use RStudio Hex Stickers
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("Alex", "Gold", email = "alexkgold@gmail.com",
   role = c("aut", "cre"))
 Description: A package to download and use stickers from the rstudio/hex-stickers repo.
@@ -13,7 +13,10 @@ LazyData: true
 Imports: 
     gh,
     base64enc,
-    fs
+    fs,
+    stringr,
+    utils
 Suggests: 
-    knitr
+    knitr,
+    testthat (>= 2.1.0)
 RoxygenNote: 7.0.2

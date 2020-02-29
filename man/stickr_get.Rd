@@ -4,24 +4,55 @@
 \alias{stickr_get}
 \title{Get hex sticker from web}
 \usage{
-stickr_get(name, pic_type = "png", destfile = NULL, view = TRUE)
+stickr_get(
+  name,
+  destfile = NULL,
+  view = TRUE,
+  filename = NULL,
+  path = NULL,
+  repo = NULL
+)
 }
 \arguments{
 \item{name}{name of sticker, character of length 1}
 
-\item{pic_type}{one of "svg" or "png", defaults to "png"}
-
 \item{destfile}{destination, defaults to NULL}
 
 \item{view}{show sticker after loading? Defaults to TRUE}
+
+\item{filename}{filename of sticker in repo, use if autodetection fails}
+
+\item{path}{path within repo, use if autodetection fails}
+
+\item{repo}{repo name, use if autodetection fails}
 }
 \value{
 path to downloaded image
 }
 \description{
-If you hit rate limits on github API calls, consider setting the GITHUB_PAT environment variable.
+This function *tries* to search for the sticker for the package you want. If
+the package is one with a sticker in the
+\link{rstudio/hex-stickers}{https://github.com/rstudio/hex-stickers} repo,
+it will come from there. If you want SVG rather than PNG, specify a filename.
+}
+\details{
+If not, this function attempts to get the package's GitHub repo from the
+package description, and look for the sticker in the man/figures directory.
+
+In case this function cannot find the sticker, escape hatches are provided
+for specifying the repo, path within the repo, and filename of the sticker
+you want.
+
+If you hit rate limits on GitHub API calls, consider setting the GITHUB_PAT environment variable.
 See \code{\link[gh:gh]{?gh::gh}} for details.
 }
 \examples{
+# Get an RStudio Sticker
 r6 <- stickr_get("R6")
+# Get an RStudio Sticker in svg
+r6 <- stickr_get("R6", filename = "R6.svg")
+# Get a non-RStudio sticker
+tt <- stickr_get("tidytext")
+# Get a particular sticker in the man/figures folder
+tm <- stickr_get("textmineR", filename = "textmineR_v8.png")
 }
