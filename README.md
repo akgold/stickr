@@ -27,9 +27,16 @@ stickr_list()
 
 # View the tidyverse sticker
 stickr_view("tidyverse")
+
 # Get the tidyverse sticker, downloads to temp file if no destfile specified
 stickr_get("tidyverse")
+
+# Get a sticker that's not in the RStudio repo
+stickr_get("textmineR")
+
+# But that's the old sticker, get the new one by name
+stickr_get("textmineR", filename = "textmineR_v8.png")
 ```
 
 A common use case would be to include in an [RMarkdown](https://rmarkdown.rstudio.com/) document, 
-that would be done using `stickr_insert("tidyverse")`.
+that would be done using `stickr_insert("tidyverse")`. If trying to insert inline, consider using `dpi` argument.
