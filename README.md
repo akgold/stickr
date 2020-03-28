@@ -44,5 +44,5 @@ that would be done using `stickr_insert("tidyverse")`. If trying to insert inlin
 # Package Maintainers
 Want to make sure users can get your sticker with `stickr`? Two steps!
 
-1. Make sure you have a [URL field](https://www.r-bloggers.com/about-urls-in-description/) in your package DESCRIPTION file that points to your package's github repo.
+1. Make sure your package's DESCRIPTION file includes a [URL and/or BugReport field field](https://www.r-bloggers.com/about-urls-in-description/) that points to your package's github repo.
 2. Put your hex sticker in the `/man/figures` directory inside your package -- one named `logo.png` will be used by default, but other names are ok too.
