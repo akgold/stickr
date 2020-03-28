@@ -40,3 +40,9 @@ stickr_get("textmineR", filename = "textmineR_v8.png")
 
 A common use case would be to include in an [RMarkdown](https://rmarkdown.rstudio.com/) document, 
 that would be done using `stickr_insert("tidyverse")`. If trying to insert inline, consider using `dpi` argument.
+
+# Package Maintainers
+Want to make sure users can get your sticker with `stickr`? Two steps!
+
+1. Make sure you have a [URL field](https://www.r-bloggers.com/about-urls-in-description/) in your package DESCRIPTION file that points to your package's github repo.
+2. Put your hex sticker in the `/man/figures` directory inside your package -- one named `logo.png` will be used by default, but other names are ok too.
