@@ -106,38 +106,12 @@ stickr_insert <- function(name, ...) {
   do.call(knitr::include_graphics,c(knitr_args, path = destfile))
 }
 
-#' List available stickers
-#'
-#' @param pic_type one of "png", "svg"
-#'
-#' @return character vector of sticker names
-#' @export
-#'
-#' @examples
-#' rs_stickr_list()
 rs_stickr_list <- function(pic_type = "png") {
   resp <- get(rs_hex_repo, toupper(pic_type))
 
   names <- vapply(resp, function(x) x$name, character(1))
   names <- names[grepl(paste0("\\.", pic_type, "$"), names, ignore.case = TRUE)]
   substr(names, 1, nchar(names) - 4)
-}
-
-#' View RStudio Stickers
-#'
-#' @inheritParams stickr_get
-#' @param ... arguments passed to \code{\link{stickr_get}}
-#'
-#' @return file where sticker is, invisibly
-#' @export
-#'
-#' @examples
-#' if (interactive()) stickr_view("R6")
-stickr_view <- function(name, ...) {
-  img <- stickr_get(name, ...)
-
-  stickr_see(img, name)
-  invisible(img)
 }
 
 ###### Internal Funcs

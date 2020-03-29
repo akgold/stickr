@@ -22,9 +22,6 @@ This is a basic example which shows you how to find and download a sticker:
 ``` r
 library(stickr)
 
-# list available stickers 
-stickr_list()
-
 # View the tidyverse sticker
 stickr_view("tidyverse")
 
