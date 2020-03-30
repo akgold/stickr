@@ -38,13 +38,13 @@ stickr_get <- function(name, destfile = NULL,
                        view = TRUE,
                        filename = NULL, path = NULL, repo = NULL) {
 
-  repo <- if (is.null(repo)) {
-    pkg_repo(name)
+  if (is.null(repo)) {
+    repo <-  pkg_repo(name)
   } else {
     repo
   }
   if (is.null(repo)) {
-    stop("Sticker GitHub repository not found, try installing the package or specifying the repo option.")
+    stop("No GitHub repo. Make sure package is installed or specify repo option.")
   }
 
   path <- if(is.null(path)){
@@ -62,7 +62,7 @@ stickr_get <- function(name, destfile = NULL,
   destfile <- check_destfile(destfile, name, filename)
 
   message(paste0("Getting ", name, " sticker from ",
-                file.path("https://github.com", repo, path, filename), "."))
+                 file.path("https://github.com", repo, path, filename), "."))
   stickr_load(
     repo,
     path,
@@ -183,13 +183,18 @@ pkg_repo <- function(pkg) {
 get_pkg_git <- function(pkg) {
   if (!pkg %in% rownames(installed.packages())) return(NULL)
 
-  txt <- unclass(packageDescription(pkg))[c("url", "BugReports")]
+  txt <- unclass(packageDescription(pkg))[c("url", "bugreports",
+                                            "URL", "BugReports")]
+  txt <- txt[!vapply(txt, is.null, logical(1))]
+  if (length(txt) == 0) return(NULL)
 
-  # paste looks stupid, but needed to make sure training / has match
-  stringr::str_match(
-    paste0(c(txt$URL, txt$BugReports), "/"),
+  # paste looks stupid, but needed to make sure trailing / has match
+  match <- stringr::str_match(
+    paste0(txt, "/"),
     "github\\.com\\/(.+?\\/.+?)\\/"
   )[, 2]
+
+  unique(match[!vapply(match, is.na, logical(1))])
 }
 
 get_gh_sticker_url <- function(repo, filename) {

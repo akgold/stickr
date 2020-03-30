@@ -1,7 +1,7 @@
 Package: stickr
 Type: Package
 Title: Use RStudio Hex Stickers
-Version: 0.2.2
+Version: 0.2.4
 Authors@R: person("Alex", "Gold", email = "alexkgold@gmail.com",
   role = c("aut", "cre"))
 Description: A package to download and use R hex stickers. Stickers made 

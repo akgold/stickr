@@ -1,6 +1,9 @@
 # stickr
 
+![](/man/figures/logo.png)
+
 <!-- badges: start -->
+[![codecov](https://codecov.io/gh/akgold/stickr/branch/master/graph/badge.svg)](https://codecov.io/gh/akgold/stickr)
 <!-- badges: end -->
 
 The goal of stickr is to make it easier for you to include any RStudio hex stickers in your work.
