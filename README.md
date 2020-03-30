@@ -1,6 +1,6 @@
 # stickr
 
-![](/man/figures/logo.png){:height="5%" width="25%"}
+<img src="https://github.com/akgold/stickr/man/figures/logo.png" width="400" height="346">
 
 <!-- badges: start -->
 [![codecov](https://codecov.io/gh/akgold/stickr/branch/master/graph/badge.svg)](https://codecov.io/gh/akgold/stickr)
