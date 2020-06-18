@@ -1,12 +1,12 @@
 Package: stickr
 Type: Package
-Title: Use RStudio Hex Stickers
+Title: View and Use R Hex Stickers
 Version: 0.3.0
 Authors@R: person("Alex", "Gold", email = "alexkgold@gmail.com",
   role = c("aut", "cre"))
-Description: A package to download and use R hex stickers. Stickers made 
-  available in standardized locations in repos, as well as those in the 
-  [`rstudio/hex-stickers`](github.com/rstudio/hex-stickers) repo will be available.
+Description: Download and use R hex stickers. Stickers made 
+  available in standardized locations in GitHub repositories, as well as those in the 
+  [`rstudio/hex-stickers`](github.com/rstudio/hex-stickers) repository will be available.
 URL: https://github.com/akgold/stickr
 License: MIT + file LICENSE
 Encoding: UTF-8

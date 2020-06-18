@@ -2,7 +2,7 @@
 % Please edit documentation in R/funs.R
 \name{stickr_insert}
 \alias{stickr_insert}
-\title{Add hex sticker in Rmd doc}
+\title{Add hex sticker in R Markdown document}
 \usage{
 stickr_insert(name, ...)
 }
@@ -16,11 +16,11 @@ Call to \code{\link[knitr:include_graphics]{knitr::include_graphics()}}
 }
 \description{
 Using the \code{dpi} argument in \code{...} will help scale width. Higher
-dpi will correspond to smaller images in rendered documents. In some quick
-testing, a dpi of 5000 results in an approximately in-line sized image.
+\code{dpi} will correspond to smaller images in rendered documents. In some quick
+testing, a \code{dpi} of 5000 results in an approximately in-line sized image.
 }
 \details{
-If you hit rate limits on github API calls, consider setting the \code{GITHUB_PAT} environment variable.
+If you hit rate limits on GitHub API calls, consider setting the \code{GITHUB_PAT} environment variable.
 See \code{\link[gh:gh]{gh::gh()}} for details.
 }
 \examples{

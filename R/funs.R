@@ -2,36 +2,36 @@
 #'
 #' This function *tries* to search for the sticker for the package you want. If
 #' the package is one with a sticker in the
-#' [rstudio/hex-stickers](https://github.com/rstudio/hex-stickers) repo,
+#' [rstudio/hex-stickers](https://github.com/rstudio/hex-stickers) repository,
 #' it will come from there. If you want SVG rather than PNG, specify a filename.
 #'
-#' If not, this function attempts to get the package's GitHub repo from the
+#' If not, this function attempts to get the package's GitHub repository from the
 #' package description, and look for the sticker in the man/figures directory.
 #'
 #' In case this function cannot find the sticker, escape hatches are provided
-#' for specifying the repo, path within the repo, and filename of the sticker
+#' for specifying the repository, path within the repository, and filename of the sticker
 #' you want.
 #'
-#' If you hit rate limits on GitHub API calls, consider setting the GITHUB_PAT environment variable.
+#' Packages stored somewhere other than GitHub are currently unsupported.
+#'
+#' If you hit rate limits on GitHub API calls, consider setting the `GITHUB_PAT` environment variable.
 #' See [gh::gh()] for details.
 #'
 #' @param name name of sticker, character of length 1
 #' @param destfile destination, defaults to `NULL`
 #' @param view show sticker after loading? Defaults to `TRUE`
-#' @param filename filename of sticker in repo, use if autodetection fails
-#' @param repo repo name, use if autodetection fails
-#' @param path path within repo, use if autodetection fails
+#' @param filename filename of sticker in repository, use if auto-detection fails
+#' @param repo repository name, use if auto-detection fails
+#' @param path path within repository, use if auto-detection fails
 #'
 #' @return path to downloaded image
 #' @export
 #'
 #' @examples
-#' # Get an RStudio Sticker
+#' # Get a sticker
 #' if(interactive()) r6 <- stickr_get("R6")
-#' # Get an RStudio Sticker in svg
+#' # Get a sticker in svg
 #' if(interactive()) r6 <- stickr_get("R6", filename = "R6.svg")
-#' # Get a non-RStudio sticker
-#' if(interactive()) tt <- stickr_get("tidytext")
 #' # Get a particular sticker in the man/figures folder
 #' if(interactive()) tm <- stickr_get("textmineR", filename = "textmineR_v8.png")
 stickr_get <- function(name, destfile = NULL,
@@ -77,13 +77,13 @@ stickr_get <- function(name, destfile = NULL,
   destfile
 }
 
-#' Add hex sticker in Rmd doc
+#' Add hex sticker in R Markdown document
 #'
 #' Using the `dpi` argument in `...` will help scale width. Higher
-#' dpi will correspond to smaller images in rendered documents. In some quick
-#' testing, a dpi of 5000 results in an approximately in-line sized image.
+#' `dpi` will correspond to smaller images in rendered documents. In some quick
+#' testing, a `dpi` of 5000 results in an approximately in-line sized image.
 #'
-#' If you hit rate limits on github API calls, consider setting the `GITHUB_PAT` environment variable.
+#' If you hit rate limits on GitHub API calls, consider setting the `GITHUB_PAT` environment variable.
 #' See [gh::gh()] for details.
 #'
 #' @inheritParams stickr_get

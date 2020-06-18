@@ -20,11 +20,11 @@ stickr_get(
 
 \item{view}{show sticker after loading? Defaults to \code{TRUE}}
 
-\item{filename}{filename of sticker in repo, use if autodetection fails}
+\item{filename}{filename of sticker in repository, use if auto-detection fails}
 
-\item{path}{path within repo, use if autodetection fails}
+\item{path}{path within repository, use if auto-detection fails}
 
-\item{repo}{repo name, use if autodetection fails}
+\item{repo}{repository name, use if auto-detection fails}
 }
 \value{
 path to downloaded image
@@ -32,27 +32,27 @@ path to downloaded image
 \description{
 This function \emph{tries} to search for the sticker for the package you want. If
 the package is one with a sticker in the
-\href{https://github.com/rstudio/hex-stickers}{rstudio/hex-stickers} repo,
+\href{https://github.com/rstudio/hex-stickers}{rstudio/hex-stickers} repository,
 it will come from there. If you want SVG rather than PNG, specify a filename.
 }
 \details{
-If not, this function attempts to get the package's GitHub repo from the
+If not, this function attempts to get the package's GitHub repository from the
 package description, and look for the sticker in the man/figures directory.
 
 In case this function cannot find the sticker, escape hatches are provided
-for specifying the repo, path within the repo, and filename of the sticker
+for specifying the repository, path within the repository, and filename of the sticker
 you want.
 
-If you hit rate limits on GitHub API calls, consider setting the GITHUB_PAT environment variable.
+Packages stored somewhere other than GitHub are currently unsupported.
+
+If you hit rate limits on GitHub API calls, consider setting the \code{GITHUB_PAT} environment variable.
 See \code{\link[gh:gh]{gh::gh()}} for details.
 }
 \examples{
-# Get an RStudio Sticker
+# Get a sticker
 if(interactive()) r6 <- stickr_get("R6")
-# Get an RStudio Sticker in svg
+# Get a sticker in svg
 if(interactive()) r6 <- stickr_get("R6", filename = "R6.svg")
-# Get a non-RStudio sticker
-if(interactive()) tt <- stickr_get("tidytext")
 # Get a particular sticker in the man/figures folder
 if(interactive()) tm <- stickr_get("textmineR", filename = "textmineR_v8.png")
 }
