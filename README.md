@@ -25,9 +25,6 @@ This is a basic example which shows you how to find and download a sticker:
 ``` r
 library(stickr)
 
-# View the tidyverse sticker
-stickr_view("tidyverse")
-
 # Get the tidyverse sticker, downloads to temp file if no destfile specified
 stickr_get("tidyverse")
 
