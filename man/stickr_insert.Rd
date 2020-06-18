@@ -9,10 +9,10 @@ stickr_insert(name, ...)
 \arguments{
 \item{name}{name of sticker, character of length 1}
 
-\item{...}{other arguments passed to \code{\link{stickr_get}} and \code{\link[knitr:include_graphics]{?knitr::include_graphics}}, consider \code{dpi}}
+\item{...}{other arguments passed to \code{\link[=stickr_get]{stickr_get()}} and \code{\link[knitr:include_graphics]{knitr::include_graphics()}}, consider \code{dpi}}
 }
 \value{
-call to \code{\link[knitr:include_graphics]{?knitr::include_graphics}}
+Call to \code{\link[knitr:include_graphics]{knitr::include_graphics()}}
 }
 \description{
 Using the \code{dpi} argument in \code{...} will help scale width. Higher
@@ -20,10 +20,10 @@ dpi will correspond to smaller images in rendered documents. In some quick
 testing, a dpi of 5000 results in an approximately in-line sized image.
 }
 \details{
-If you hit rate limits on github API calls, consider setting the GITHUB_PAT environment variable.
-See \code{\link[gh:gh]{?gh::gh}} for details.
+If you hit rate limits on github API calls, consider setting the \code{GITHUB_PAT} environment variable.
+See \code{\link[gh:gh]{gh::gh()}} for details.
 }
 \examples{
 # This returns a function, really only makes sense inside Rmd
-stickr_insert("R6")
+if (interactive()) stickr_insert("R6")
 }

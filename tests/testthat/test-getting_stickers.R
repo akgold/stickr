@@ -1,6 +1,7 @@
 get_filename <- function(x, name) substr(x, nchar(x) - (nchar(name) + 3), nchar(x))
 
 test_that("Getting Stickers Works", {
+  testthat::skip_on_cran()
   f <- stickr_get("R6", view  = FALSE)
   expect_equal(get_filename(f, "r6"), "R6.png")
   expect_true(file.exists(f))
