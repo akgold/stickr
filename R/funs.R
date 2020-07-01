@@ -181,10 +181,13 @@ pkg_repo <- function(pkg) {
 }
 
 get_pkg_git <- function(pkg) {
-  if (!pkg %in% rownames(utils::installed.packages())) return(NULL)
+  desc <- tryCatch(utils::packageDescription(pkg),
+                   warning = function(e) "Not Found")
 
-  txt <- unclass(utils::packageDescription(pkg))[c("url", "bugreports",
-                                            "URL", "BugReports")]
+  if (desc[1] == "Not Found") return(NULL)
+
+  txt <- unclass(desc)[c("url", "bugreports",
+                         "URL", "BugReports")]
   txt <- txt[!vapply(txt, is.null, logical(1))]
   if (length(txt) == 0) return(NULL)
 
