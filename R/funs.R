@@ -231,13 +231,29 @@ stickr_filename <- function(name, repo, path) {
 }
 
 gh_filename <- function(repo, path) {
-  tryCatch({
-    file_names <- vapply(get(repo, path), function(x) x$name, character(1))
-    file_names[stringr::str_detect(file_names, "logo")]
-  },
-  error = function(e) {
-    print(e)
-    return(NULL)
-  })
+  file_names <- tryCatch(
+    vapply(get(repo, path), function(x) x$name, character(1)),
+    error = function(e) {
+      print(e)
+      return(NULL)
+    })
+
+  if ("logo.png" %in% file_names && length(file_names) > 1) {
+    fn <- warning(
+      paste(
+        c(
+          "Taking logo.png, but these also found: ",
+          paste(
+            file_names[file_names != "logo.png"],
+            collapse = ", "
+          ),
+          ". Use filename argument if you want one of them."
+        )
+      )
+    )
+    file_names <- "logo.png"
+  }
+
+  file_names
 }
 

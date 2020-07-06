@@ -17,6 +17,10 @@ test_that("Getting Stickers Works", {
   f <- stickr_get("textmineR", filename = "textmineR_v8.png", view = FALSE)
   expect_equal(get_filename(f, "textmineR"), "textmineR.png")
   expect_true(file.exists(f))
+
+  f <- expect_warning(stickr_get("nombre", view = FALSE))
+  expect_equal(get_filename(f, "nombre"), "nombre")
+  expect_true(file.exists(f))
 })
 
 test_that("Inserting Stickers Works", {
