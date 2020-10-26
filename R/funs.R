@@ -182,9 +182,16 @@ pkg_repo <- function(pkg) {
 
 get_pkg_git <- function(pkg) {
   desc <- tryCatch(utils::packageDescription(pkg),
-                   warning = function(e) "Not Found")
+                   warning = function(w) "Not Found")
 
-  if (desc[1] == "Not Found") return(NULL)
+  if (desc[1] == "Not Found") {
+    warning(
+      paste(
+        "Package", pkg, "not found. Try installing it?"
+      )
+    )
+    return(NULL)
+  }
 
   txt <- unclass(desc)[c("url", "bugreports",
                          "URL", "BugReports")]

@@ -10,23 +10,30 @@ test_that("Getting Stickers Works", {
   expect_equal(get_filename(f, "r6"), "R6.svg")
   expect_true(file.exists(f))
 
-  f <- stickr_get("tidytext", view = FALSE)
-  expect_equal(get_filename(f, "tidytext"), "tidytext.png")
-  expect_true(file.exists(f))
+  if (interactive()) {
+    f <- stickr_get("tidytext", repo = "juliasilge/tidytext", view = FALSE)
+    expect_equal(get_filename(f, "tidytext"), "tidytext.png")
+    expect_true(file.exists(f))
 
-  f <- stickr_get("textmineR", filename = "textmineR_v8.png", view = FALSE)
-  expect_equal(get_filename(f, "textmineR"), "textmineR.png")
-  expect_true(file.exists(f))
+    f <- stickr_get("textmineR", filename = "textmineR_v8.png", view = FALSE)
+    expect_equal(get_filename(f, "textmineR"), "textmineR.png")
+    expect_true(file.exists(f))
 
-  f <- expect_warning(stickr_get("nombre", view = FALSE))
-  expect_equal(get_filename(f, "nombre"), "nombre")
-  expect_true(file.exists(f))
+    f <- expect_warning(stickr_get("nombre", view = FALSE))
+    expect_equal(get_filename(f, "nombre"), "nombre.png")
+    expect_true(file.exists(f))
+  }
+
 })
 
 test_that("Inserting Stickers Works", {
-  f <- stickr_insert("R6", filename = "R6.svg", dpi = 500)
-  expect_equal(get_filename(f[1], "r6"), "R6.svg")
-  expect_true(file.exists(f[1]))
-  expect_equal(class(f), c("knit_image_paths", "knit_asis"))
-  expect_equal(attr(f, "dpi"), 500)
+  testthat::skip_on_cran()
+  if (interactive()) {
+    f <- stickr_insert("R6", filename = "R6.svg", dpi = 500)
+    expect_equal(get_filename(f[1], "r6"), "R6.svg")
+    expect_true(file.exists(f[1]))
+    expect_equal(class(f), c("knit_image_paths", "knit_asis"))
+    expect_equal(attr(f, "dpi"), 500)
+  }
+
 })

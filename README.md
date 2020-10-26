@@ -36,6 +36,9 @@ stickr_get("textmineR", filename = "textmineR_v8.png")
 A common use case would be to include in an [R Markdown](https://rmarkdown.rstudio.com/) document, 
 that would be done using `stickr_insert("tidyverse")`. If trying to insert inline, consider using `dpi` argument.
 
+# GitHub Rate Limits
+If you're performing unauthenticated calls to get stickers, you'll probably hit rate limits quite quickly. See the [gh](https://github.com/r-lib/gh) package documentation for details on how to provide a GitHub PAT to authenticate and get higher rate limits.
+
 # Package Maintainers
 Want to make sure users can get your sticker with `stickr`? Two steps!
 
