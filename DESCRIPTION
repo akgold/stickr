@@ -1,7 +1,7 @@
 Package: stickr
 Type: Package
 Title: View and Use R Hex Stickers
-Version: 0.3.1
+Version: 0.3.2
 Authors@R: person("Alex", "Gold", email = "alexkgold@gmail.com",
   role = c("aut", "cre"))
 Description: Download and use R hex stickers. Stickers made 

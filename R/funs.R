@@ -1,16 +1,16 @@
 #' Get hex sticker from web
 #'
-#' This function *tries* to search for the sticker for the package you want. If
-#' the package is one with a sticker in the
-#' [rstudio/hex-stickers](https://github.com/rstudio/hex-stickers) repository,
-#' it will come from there. If you want SVG rather than PNG, specify a filename.
+#' This function *tries* to search for the sticker for the package you want.
 #'
-#' If not, this function attempts to get the package's GitHub repository from the
-#' package description, and look for the sticker in the man/figures directory.
+#' It will automatically get stickers for any packages in the
+#' [rstudio/hex-stickers](https://github.com/rstudio/hex-stickers) repository
+#' or if the package's GitHub repository is specified in the DESCRIPTION and
+#' the `man/figures` directory contains (1) exactly one file
+#' or (2) a file named `logo.png`. These cases cover *most* CRAN packages.
 #'
-#' In case this function cannot find the sticker, escape hatches are provided
-#' for specifying the repository, path within the repository, and filename of the sticker
-#' you want.
+#' For packages where the sticker cannot be automatically found or defaults must
+#' be overridden, the `repository`, `path`, and `filename` arguments provide
+#' escape hatches.
 #'
 #' Packages stored somewhere other than GitHub are currently unsupported.
 #'
@@ -231,13 +231,29 @@ stickr_filename <- function(name, repo, path) {
 }
 
 gh_filename <- function(repo, path) {
-  tryCatch({
-    file_names <- vapply(get(repo, path), function(x) x$name, character(1))
-    file_names[stringr::str_detect(file_names, "logo")]
-  },
-  error = function(e) {
-    print(e)
-    return(NULL)
-  })
+  file_names <- tryCatch(
+    vapply(get(repo, path), function(x) x$name, character(1)),
+    error = function(e) {
+      print(e)
+      return(NULL)
+    })
+
+  if ("logo.png" %in% file_names && length(file_names) > 1) {
+    fn <- warning(
+      paste(
+        c(
+          "Taking logo.png, but these also found: ",
+          paste(
+            file_names[file_names != "logo.png"],
+            collapse = ", "
+          ),
+          ". Use filename argument if you want one of them."
+        )
+      )
+    )
+    file_names <- "logo.png"
+  }
+
+  file_names
 }
 
